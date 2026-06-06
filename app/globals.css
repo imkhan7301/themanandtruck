@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 38 92% 50%;
+    --primary-foreground: 222 47% 7%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 38 92% 50%;
+    --accent-foreground: 222 47% 7%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 38 92% 50%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-brand-navy text-brand-light;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-brand-slate;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-brand-amber rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-amberLight;
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(245, 158, 11, 0.3);
+    color: #F8FAFC;
+  }
+}
+
+@layer components {
+  /* Brand button variants */
+  .btn-amber {
+    @apply bg-brand-amber hover:bg-brand-amberDark text-brand-navy font-bold px-6 py-3 rounded-xl transition-all duration-200 shadow-lg hover:shadow-amber-500/25 hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply border-2 border-white/30 hover:border-brand-amber text-white hover:text-brand-amber font-bold px-6 py-3 rounded-xl transition-all duration-200 backdrop-blur-sm;
+  }
+
+  .btn-ghost {
+    @apply text-brand-amber hover:text-brand-amberLight font-semibold transition-colors duration-200;
+  }
+
+  /* Cards */
+  .card-dark {
+    @apply bg-brand-slate border border-white/5 rounded-2xl shadow-xl;
+  }
+
+  .card-glow {
+    @apply bg-brand-slate border border-brand-amber/20 rounded-2xl shadow-xl shadow-amber-500/5;
+  }
+
+  /* Status badges */
+  .badge-urgent {
+    @apply bg-red-500/20 text-red-400 border border-red-500/30 text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wide;
+  }
+
+  .badge-today {
+    @apply bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wide;
+  }
+
+  .badge-scheduled {
+    @apply bg-green-500/20 text-green-400 border border-green-500/30 text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wide;
+  }
+
+  .badge-verified {
+    @apply bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold px-2 py-0.5 rounded-full;
+  }
+
+  /* Input styling */
+  .input-dark {
+    @apply bg-brand-navy border border-white/10 focus:border-brand-amber rounded-xl px-4 py-3 text-white placeholder:text-white/30 outline-none transition-all duration-200 focus:ring-2 focus:ring-brand-amber/20 w-full;
+  }
+
+  /* Section containers */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-amber to-brand-amberLight bg-clip-text text-transparent;
+  }
+
+  /* Shimmer loading skeleton */
+  .skeleton {
+    @apply bg-gradient-to-r from-brand-slate via-white/5 to-brand-slate bg-[length:200%_100%] animate-shimmer rounded-lg;
+  }
+
+  /* Driver level badges */
+  .level-rookie  { @apply bg-amber-900/40  text-amber-600  border border-amber-900/50;  }
+  .level-pro     { @apply bg-yellow-800/40 text-yellow-400 border border-yellow-700/50; }
+  .level-elite   { @apply bg-orange-800/40 text-orange-400 border border-orange-700/50; }
+  .level-legend  { @apply bg-red-900/40    text-red-400    border border-red-800/50;    }
+}
+
+@layer utilities {
+  /* Glass morphism */
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  /* Amber glow */
+  .glow-amber {
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.15);
+  }
+
+  /* Road pattern background */
+  .bg-road {
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 40px,
+        rgba(245, 158, 11, 0.04) 40px,
+        rgba(245, 158, 11, 0.04) 80px
+      ),
+      radial-gradient(ellipse at 20% 50%, rgba(245, 158, 11, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(245, 158, 11, 0.03) 0%, transparent 50%);
+  }
+
+  /* Grid dots */
+  .bg-dots {
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Hide scrollbar */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Safe area padding for mobile */
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+  .pt-safe { padding-top: env(safe-area-inset-top); }
+}
