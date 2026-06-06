@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140">
+  <!-- Hexagon background -->
+  <polygon points="60,4 112,32 112,88 60,116 8,88 8,32" fill="#F59E0B"/>
+  <!-- Truck body -->
+  <rect x="22" y="58" width="52" height="26" rx="3" fill="#0F172A"/>
+  <!-- Truck cab -->
+  <path d="M74 66 L74 84 L90 84 L90 72 L84 66 Z" fill="#0F172A"/>
+  <!-- Windshield -->
+  <path d="M76 68 L76 72 L88 72 L88 68 L84 64 Z" fill="#F59E0B" opacity="0.6"/>
+  <!-- Wheels -->
+  <circle cx="36" cy="86" r="7" fill="#1E293B" stroke="#F59E0B" stroke-width="2"/>
+  <circle cx="36" cy="86" r="3" fill="#F59E0B"/>
+  <circle cx="78" cy="86" r="7" fill="#1E293B" stroke="#F59E0B" stroke-width="2"/>
+  <circle cx="78" cy="86" r="3" fill="#F59E0B"/>
+  <!-- Brand text -->
+  <text x="60" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="900" fill="#0F172A" letter-spacing="1">THE MAN &amp; TRUCK</text>
+</svg>
