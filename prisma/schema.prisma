@@ -1,0 +1,172 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id @default(cuid())
+  email          String    @unique
+  name           String?
+  phone          String?
+  role           Role      @default(CLIENT)
+  passwordHash   String?
+  emailVerified  DateTime?
+  image          String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  clientBookings Booking[] @relation("ClientBookings")
+  driver         Driver?
+  sessions       Session[]
+  accounts       Account[]
+}
+
+enum Role {
+  CLIENT
+  DRIVER
+  ADMIN
+}
+
+model Driver {
+  id              String    @id @default(cuid())
+  userId          String    @unique
+  user            User      @relation(fields: [userId], references: [id])
+  truckType       TruckType
+  truckYear       String?
+  truckMake       String?
+  truckModel      String?
+  licensePlate    String?
+  licenseUrl      String?
+  insuranceUrl    String?
+  vehiclePhotoUrl String?
+  isVerified      Boolean   @default(false)
+  isAvailable     Boolean   @default(false)
+  rating          Float     @default(5.0)
+  totalJobs       Int       @default(0)
+  stripeAccountId String?
+  currentLat      Float?
+  currentLng      Float?
+  createdAt       DateTime  @default(now())
+  bookings        Booking[]
+}
+
+enum TruckType {
+  PICKUP
+  BOX_TRUCK
+  CARGO_VAN
+}
+
+model Booking {
+  id               String        @id @default(cuid())
+  bookingNumber    String        @unique @default(cuid())
+  clientId         String
+  client           User          @relation("ClientBookings", fields: [clientId], references: [id])
+  driverId         String?
+  driver           Driver?       @relation(fields: [driverId], references: [id])
+  pickupAddress    String
+  pickupLat        Float?
+  pickupLng        Float?
+  dropoffAddress   String
+  dropoffLat       Float?
+  dropoffLng       Float?
+  loadType         LoadType
+  loadSize         LoadSize
+  urgency          Urgency
+  specialHandling  String[]
+  notes            String?
+  status           BookingStatus @default(PENDING)
+  basePrice        Float
+  loadFee          Float         @default(0)
+  urgencySurcharge Float         @default(0)
+  specialFee       Float         @default(0)
+  totalPrice       Float
+  platformFee      Float
+  driverPayout     Float
+  stripePaymentId  String?
+  paidAt           DateTime?
+  scheduledFor     DateTime?
+  acceptedAt       DateTime?
+  pickedUpAt       DateTime?
+  deliveredAt      DateTime?
+  clientRating     Int?
+  driverRating     Int?
+  clientReview     String?
+  aiMatchScore     Float?
+  aiNotes          String?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+}
+
+enum LoadType {
+  MEDICAL_LAB
+  LEGAL_DOCUMENTS
+  HOTEL_LOGISTICS
+  FURNITURE_APPLIANCES
+  SAME_DAY_COURIER
+  CONSTRUCTION_MATERIALS
+  EVENT_SETUP
+  GENERAL_HAULING
+}
+
+enum LoadSize {
+  SMALL
+  MEDIUM
+  LARGE
+  EXTRA_LARGE
+}
+
+enum Urgency {
+  ASAP
+  TODAY
+  SCHEDULED
+}
+
+enum BookingStatus {
+  PENDING
+  QUOTED
+  PAID
+  MATCHED
+  DRIVER_EN_ROUTE
+  PICKED_UP
+  IN_TRANSIT
+  DELIVERED
+  COMPLETED
+  CANCELLED
+  DISPUTED
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
