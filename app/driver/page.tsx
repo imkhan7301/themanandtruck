@@ -16,10 +16,15 @@ export default function DriverDashboardPage() {
   const [acceptedJob, setAcceptedJob] = useState<string | null>(null);
   const [jobs, setJobs] = useState(mockJobs);
 
-  const handleAccept = (id: string) => { setAcceptedJob(id); setJobs(j => j.filter(x => x.id !== id)); };
-  const handlePass = (id: string) => { setJobs(j => j.filter(x => x.id !== id)); };
+  const handleAccept = (id: string) => {
+    setAcceptedJob(id);
+    setJobs((currentJobs) => currentJobs.filter((job) => job.id !== id));
+  };
+  const handlePass = (id: string) => {
+    setJobs((currentJobs) => currentJobs.filter((job) => job.id !== id));
+  };
 
-  const activeJob = mockJobs.find(j => j.id === acceptedJob);
+  const activeJob = mockJobs.find((job) => job.id === acceptedJob);
 
   return (
     <main className="bg-brand-navy min-h-screen">
