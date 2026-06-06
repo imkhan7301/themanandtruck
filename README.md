@@ -9,7 +9,7 @@
 
 > **Your Load. Our Mission.**
 
-AI-powered on-demand pickup truck & box truck gig marketplace. Built to make life and work simpler for every laborer on the road — InshAllah.
+AI-powered on-demand pickup truck & box truck gig marketplace. Built to make life and work simpler for every laborer on the road — Inshallah.
 
 **🌐 Live:** [themanandtruck.com](https://themanandtruck.com)
 
@@ -194,7 +194,7 @@ npm run build   # Verify build passes locally first
 
 Built by the founder — a pickup truck owner ready to take gigs today. The goal: make every hotel, law firm, medical lab, and business in the area able to book a trusted driver in minutes.
 
-*"On Time. Every Time. InshAllah."*
+*"On Time. Every Time. Inshallah."*
 
 ---
 

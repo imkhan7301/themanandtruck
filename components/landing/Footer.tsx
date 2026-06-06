@@ -61,7 +61,7 @@ export function Footer() {
         </div>
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-xs">
-            © {new Date().getFullYear()} The Man & Truck. All rights reserved. On Time. Every Time. InshAllah.
+            © {new Date().getFullYear()} The Man & Truck. All rights reserved. On Time. Every Time. Inshallah.
           </p>
           <p className="text-brand-amber text-xs font-medium">AI-Powered. Human Driven.</p>
         </div>

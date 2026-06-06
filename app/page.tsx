@@ -48,7 +48,7 @@ const testimonials = [
   {
     name: "Dr. Ahmad Hassan",
     role: "Lab Manager, CityMed Diagnostics",
-    text: "Time-critical specimen transport requires reliability. The Man & Truck&apos;s same-day service and real-time tracking gives us total peace of mind. InshAllah they keep growing!",
+    text: "Time-critical specimen transport requires reliability. The Man & Truck&apos;s same-day service and real-time tracking gives us total peace of mind. Inshallah they keep growing!",
     rating: 5,
   },
 ];
@@ -208,7 +208,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black text-white mb-4">Trusted by Businesses</h2>
-            <p className="text-white/60 text-lg">On Time. Every Time. InshAllah.</p>
+            <p className="text-white/60 text-lg">On Time. Every Time. Inshallah.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((testimonial) => (
